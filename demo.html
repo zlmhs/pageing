@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="paging.css">
+    <script src="jquery.js"></script>
+    <script src="paging.js"></script>
+    <title>Document</title>
+</head>
+<body>
+        <div class="con">
+
+        </div>
+        <div class="paging-wapper">
+            <div value="1 0"></div>
+            <div id="page" class="page_div"></div>
+        </div>
+        <script>
+            var alayData = {pageNum:1,status:'5'};
+            searchSchoolAnalyFun();
+            function searchSchoolAnalyFun(){
+                $.ajax({
+                    url:'http://139.129.224.31:8980/libomo-home/home/reviews/selectActivityVideo.do',
+                    type:'POST',
+                    data:alayData,
+                    success:function(data){
+                        if (data.code == 0) {
+                            console.log('data',data);
+                            $('.con').html(data.data.pageNum);
+                            paging(alayData.pageNum,data.data.pages,data.data.total)
+                        }else{
+                            alert(data.msg)
+                        }
+                    }
+                })
+            } 
+            function paging(pageNo,totalPage,totalSize){
+                $('#page').paging({
+                    pageNo:pageNo,
+                    totalPage: totalPage,
+                    totalSize: totalSize,
+                    callback: function(num) {
+                        console.log(num);
+                        alayData.pageNum = num;
+                        searchSchoolAnalyFun();
+                    }
+                })
+            }
+        </script>
+</body>
+</html>

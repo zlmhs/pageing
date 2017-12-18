@@ -1,0 +1,42 @@
+	        .page_div a {
+				min-width: 30px;
+				height: 28px;
+				border: 1px solid #dce0e0!important;
+				text-align: center;
+				margin: 0 4px;
+				cursor: pointer;
+				line-height: 28px;
+				color: #666666;
+				font-size: 13px;
+				display: inline-block;
+			}
+			
+			#firstPage,
+			#lastPage {
+				width: 50px;
+				color: #04388b;
+				border: 1px solid #04388b!important;
+			}
+			
+			#prePage,
+			#nextPage {
+				width: 70px;
+				color: #04388b;
+				border: 1px solid #04388b!important;
+			}
+			
+			.page_div .current {
+				background-color: #04388b;
+				border-color: #04388b;
+				color: #FFFFFF;
+			}
+			
+			.totalPages {
+				margin: 0 10px;
+			}
+			
+			.totalPages span,
+			.totalSize span {
+				color: #04388b;
+				margin: 0 5px;
+			}
